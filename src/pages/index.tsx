@@ -17,12 +17,16 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-      <main>
-        <Navbar />
-        <Hero />
-        <Features />
-        <Contact />
-        <Footer />
+      <main className="flex h-screen flex-col justify-between">
+        <div>
+          <Navbar />
+          <Hero />
+          <Features />
+        </div>
+        <div>
+          <Contact />
+          <Footer />
+        </div>
       </main>
     </>
   );
