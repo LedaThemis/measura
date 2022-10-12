@@ -5,6 +5,7 @@ import { trpc } from "../utils/trpc";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Home/Hero";
 import Features from "../components/Home/Features";
+import Contact from "../components/Home/Contact";
 
 const Home: NextPage = () => {
   const hello = trpc.example.hello.useQuery({ text: "from tRPC" });
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
         <Navbar />
         <Hero />
         <Features />
+        <Contact />
         <div className="flex w-full items-center justify-center pt-6 text-2xl text-blue-500">
           {hello.data ? <p>{hello.data.greeting}</p> : <p>Loading..</p>}
         </div>
