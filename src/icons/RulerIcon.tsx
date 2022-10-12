@@ -1,8 +1,9 @@
-const RulerIcon = () => (
+const RulerIcon = (props: { className: string }) => (
   <svg
+    aria-hidden="true"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 36 36"
-    className="h-10 w-10 rounded-full bg-blue-100 p-2 text-white"
+    {...props}
   >
     <path
       fill="#FFCC4D"
