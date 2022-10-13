@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Sidebar from "../../components/App/SidebarNav";
 
-const Home: NextPage = () => {
+const Reminders: NextPage = () => {
   return (
     <>
       <Head>
@@ -23,4 +23,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Reminders;

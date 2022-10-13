@@ -2,11 +2,11 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Sidebar from "../../components/App/SidebarNav";
 
-const Home: NextPage = () => {
+const History: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Dashboard - Measura</title>
+        <title>History - Measura</title>
         <meta name="description" content="See your past entries in Measura." />
         <link rel="icon" href="/favicon.svg" />
       </Head>
@@ -20,4 +20,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default History;
