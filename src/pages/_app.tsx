@@ -6,6 +6,7 @@ import type { AppType } from "next/app";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
 import AuthenticatedComponent from "../components/pages/App/AuthenticatedComponent";
+import { Toaster } from "react-hot-toast";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -19,6 +20,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <SessionProvider session={session}>
         <AuthenticatedComponent>
           <Component {...pageProps} />
+          <Toaster />
         </AuthenticatedComponent>
       </SessionProvider>
     );
