@@ -7,7 +7,7 @@ import {
   BsGraphUp,
   BsHouse,
 } from "react-icons/bs";
-import RulerIcon from "../../icons/RulerIcon";
+import RulerIcon from "../../../icons/RulerIcon";
 
 interface SidebarNavLinkProps {
   title: string;
@@ -22,14 +22,14 @@ const SidebarNavLink = ({ path, Icon, title }: SidebarNavLinkProps) => {
 
   return (
     <Link href={path}>
-      <div
+      <a
         className={`duration-50 flex w-min cursor-pointer items-center gap-2 rounded-xl p-1 transition-colors hover:bg-sky-100  sm:w-full ${selectedClass}`}
       >
         <div className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-500">
           {Icon}
         </div>
         <p className="sr-only sm:not-sr-only">{title}</p>
-      </div>
+      </a>
     </Link>
   );
 };

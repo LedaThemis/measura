@@ -5,7 +5,7 @@ import type { Session } from "next-auth";
 import type { AppType } from "next/app";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
-import AuthenticatedComponent from "../components/App/AuthenticatedComponent";
+import AuthenticatedComponent from "../components/pages/App/AuthenticatedComponent";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,

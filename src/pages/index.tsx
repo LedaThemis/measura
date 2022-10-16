@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Navbar from "../components/Navbar";
-import Hero from "../components/Home/Hero";
-import Features from "../components/Home/Features";
-import Contact from "../components/Home/Contact";
+import Hero from "../components/pages/Home/Hero";
+import Features from "../components/pages/Home/Features";
+import Contact from "../components/pages/Home/Contact";
 import Footer from "../components/Footer";
 
 const Home: NextPage = () => {

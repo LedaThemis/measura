@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Sidebar from "../../components/App/SidebarNav";
+import Sidebar from "../../components/pages/App/Sidebar";
 
 const Reminders: NextPage = () => {
   return (
