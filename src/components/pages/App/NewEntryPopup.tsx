@@ -66,14 +66,21 @@ const NewEntryPopup = forwardRef<HTMLDialogElement, NewEntryPopupProps>(
         formData["time"]["minutes"]
       );
 
+      // Converting cm to m
+      const value =
+        formData["type"] === "WEIGHT"
+          ? formData["value"]
+          : formData["value"] / 100;
+
       const mutationPayload = {
         type: formData["type"],
-        value: formData["value"],
+        value,
         date,
       };
 
       mutation.mutate(mutationPayload, {
         onSuccess: () => {
+          setErrors({});
           props.closeModal();
         },
         onError(error) {
