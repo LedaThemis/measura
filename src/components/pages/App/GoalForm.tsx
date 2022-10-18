@@ -40,6 +40,7 @@ type ErrorsType = {
 };
 
 const GoalForm = () => {
+  const utils = trpc.useContext();
   const getGoalQuery = trpc.me.getGoal.useQuery();
   const setGoalMutation = trpc.me.setGoal.useMutation();
 
@@ -50,7 +51,7 @@ const GoalForm = () => {
   const [errors, setErrors] = useState<ErrorsType>({});
 
   useEffect(() => {
-    if (getGoalQuery.data && !initialGoalValuesState) {
+    if (getGoalQuery.data) {
       const {
         weight,
         height,
@@ -92,7 +93,7 @@ const GoalForm = () => {
 
       setInitialGoalValuesState(convertedValues);
     }
-  }, [getGoalQuery.data, initialGoalValuesState]);
+  }, [getGoalQuery.data]);
 
   const handleGoalSubmit = () => {
     const values = {
@@ -119,6 +120,7 @@ const GoalForm = () => {
 
     setGoalMutation.mutate(convertedValues, {
       onSuccess: () => {
+        utils.me.getGoal.invalidate();
         toast.success("Successfully updated goal");
       },
       onError: (error) => {
