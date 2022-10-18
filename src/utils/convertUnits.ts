@@ -22,7 +22,30 @@ type UnitsType =
   | typeof measurementTypesUserUnits
   | typeof measurementTypesDBUnits;
 
-const convertUnits = (
+export const convertUnit = (
+  value: number,
+  field: typeof measurementTypesLowerCase[number],
+  currentUnits: UnitsType,
+  targetUnits: UnitsType
+) => {
+  const currentUnit = currentUnits[field.toUpperCase()];
+  const targetUnit = targetUnits[field.toUpperCase()];
+
+  if (targetUnit === currentUnit) return value;
+
+  if (
+    (currentUnit === "cm" && targetUnit === "m") ||
+    (currentUnit === "m" && targetUnit === "cm")
+  ) {
+    // We return the converted value
+    return convert(value, currentUnit).to(targetUnit);
+  } else {
+    // e.g. when current unit is kg and target one is m
+    throw new Error("This should be impossible.");
+  }
+};
+
+export const convertUnits = (
   values: IValues,
   currentUnits: UnitsType,
   targetUnits: UnitsType
@@ -31,22 +54,11 @@ const convertUnits = (
 
   measurementTypesLowerCase.forEach((key) => {
     const value = values[key];
-    const currentUnit = currentUnits[key.toUpperCase()];
-    const targetUnit = targetUnits[key.toUpperCase()];
 
     if (value === null) return;
-    if (currentUnit === targetUnit) return;
 
-    if (
-      (currentUnit === "cm" && targetUnit === "m") ||
-      (currentUnit === "m" && targetUnit === "cm")
-    ) {
-      // We update final with the converted value
-      final[key] = convert(value, currentUnit).to(targetUnit);
-    }
+    final[key] = convertUnit(value, key, currentUnits, targetUnits);
   });
 
   return final;
 };
-
-export default convertUnits;

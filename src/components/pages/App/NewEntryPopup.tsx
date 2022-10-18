@@ -1,7 +1,9 @@
 import { forwardRef, useState } from "react";
 import toast from "react-hot-toast";
 import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
+import { convertUnit } from "../../../utils/convertUnits";
 import { measurementTypesUpperCase } from "../../../utils/measurementTypes";
+import measurementTypesDBUnits from "../../../utils/measurementTypesDBUnits";
 import measurementTypesUserUnits from "../../../utils/measurementTypesUserUnits";
 import { trpc } from "../../../utils/trpc";
 import TimePicker from "../../bases/TimePicker";
@@ -42,15 +44,16 @@ const NewEntryPopup = forwardRef<HTMLDialogElement, NewEntryPopupProps>(
         formData["time"]["minutes"]
       );
 
-      // Converting cm to m
-      const value =
-        formData["type"] === "WEIGHT"
-          ? formData["value"]
-          : formData["value"] / 100;
+      const convertedValue = convertUnit(
+        formData["value"],
+        formData["type"].toLowerCase(),
+        measurementTypesUserUnits,
+        measurementTypesDBUnits
+      );
 
       const mutationPayload = {
         type: formData["type"],
-        value,
+        value: convertedValue,
         date,
       };
 

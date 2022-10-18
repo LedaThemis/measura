@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
-import convertUnits from "../../../utils/convertUnits";
+import { convertUnits } from "../../../utils/convertUnits";
 import { measurementTypesLowerCase } from "../../../utils/measurementTypes";
 import measurementTypesDBUnits from "../../../utils/measurementTypesDBUnits";
 import measurementTypesUserUnits from "../../../utils/measurementTypesUserUnits";
@@ -9,7 +9,7 @@ import { trpc } from "../../../utils/trpc";
 
 const isOriginalState = (
   state: GoalValuesType,
-  data: GoalValuesType | null,
+  data: GoalValuesType | null
 ) => {
   if (!data) return true;
 
