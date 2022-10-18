@@ -2,7 +2,7 @@ import { forwardRef, useState } from "react";
 import toast from "react-hot-toast";
 import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
 import { measurementTypesUpperCase } from "../../../utils/measurementTypes";
-import measurementTypesUnits from "../../../utils/measurementTypesUnits";
+import measurementTypesUserUnits from "../../../utils/measurementTypesUserUnits";
 import { trpc } from "../../../utils/trpc";
 import TimePicker from "../../bases/TimePicker";
 
@@ -149,7 +149,7 @@ const NewEntryPopup = forwardRef<HTMLDialogElement, NewEntryPopupProps>(
                       />
                       <div className="pointer-events-none rounded-md bg-zinc-500 p-2">
                         <p className="text-base text-white">
-                          {measurementTypesUnits[formData["type"]]}
+                          {measurementTypesUserUnits[formData["type"]]}
                         </p>
                       </div>
                     </div>

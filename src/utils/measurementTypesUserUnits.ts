@@ -1,4 +1,7 @@
-const measurementTypesUnits = {
+/**
+ * Units displayed to user
+ */
+const measurementTypesUserUnits = {
   WEIGHT: "kg",
   HEIGHT: "cm",
   NECK: "cm",
@@ -13,4 +16,4 @@ const measurementTypesUnits = {
   CALVES: "cm",
 } as const;
 
-export default measurementTypesUnits;
+export default measurementTypesUserUnits;
