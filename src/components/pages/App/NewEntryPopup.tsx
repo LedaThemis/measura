@@ -3,29 +3,11 @@ import { inferProcedureOutput } from "@trpc/server";
 import { forwardRef, useState } from "react";
 import toast from "react-hot-toast";
 import { AppRouter } from "../../../server/trpc/router";
+import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
+import { measurementTypesUpperCase } from "../../../utils/measurementTypes";
+import measurementTypesUnits from "../../../utils/measurementTypesUnits";
 import { trpc } from "../../../utils/trpc";
 import TimePicker from "../../bases/TimePicker";
-
-const measurementTypesUnits = {
-  WEIGHT: "kg",
-  HEIGHT: "cm",
-  NECK: "cm",
-  SHOULDERS: "cm",
-  ARMS: "cm",
-  CHEST: "cm",
-  FOREARMS: "cm",
-  WRIST: "cm",
-  WAIST: "cm",
-  HIPS: "cm",
-  THIGHS: "cm",
-  CALVES: "cm",
-};
-
-const capitalFirstLetter = (str: string) => {
-  const lowerCaseStr = str.toLowerCase();
-
-  return lowerCaseStr[0]?.toUpperCase() + lowerCaseStr.slice(1);
-};
 
 interface NewEntryPopupProps {
   closeModal: () => void;
@@ -42,7 +24,6 @@ interface IFormData {
 
 const NewEntryPopup = forwardRef<HTMLDialogElement, NewEntryPopupProps>(
   function NewEntryPopup(props, ref) {
-    const { data = [] } = trpc.measurements.getMeasurementTypes.useQuery();
     const mutation = trpc.measurements.createMeasurement.useMutation();
     const [errors, setErrors] = useState<{
       type?: string;
@@ -132,7 +113,7 @@ const NewEntryPopup = forwardRef<HTMLDialogElement, NewEntryPopupProps>(
                         }));
                       }}
                     >
-                      {data.map((v) => (
+                      {measurementTypesUpperCase.map((v) => (
                         <option key={v} value={v}>
                           {capitalFirstLetter(v)}
                         </option>

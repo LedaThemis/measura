@@ -1,27 +1,12 @@
 import { z } from "zod";
+import { measurementTypesUpperCase } from "../../../utils/measurementTypes";
 import { router, protectedProcedure } from "../trpc";
 
-const measurementTypes = [
-  "WEIGHT",
-  "HEIGHT",
-  "NECK",
-  "SHOULDERS",
-  "ARMS",
-  "CHEST",
-  "FOREARMS",
-  "WRIST",
-  "WAIST",
-  "HIPS",
-  "THIGHS",
-  "CALVES",
-] as const;
-
 export const measurementsRouter = router({
-  getMeasurementTypes: protectedProcedure.query(() => measurementTypes),
   createMeasurement: protectedProcedure
     .input(
       z.object({
-        type: z.enum(measurementTypes),
+        type: z.enum(measurementTypesUpperCase),
         value: z
           .number({
             required_error: "Value is required.",

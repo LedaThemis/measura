@@ -42,6 +42,7 @@ model User {
   accounts      Account[]
   measurements  Measurement[]
   sessions      Session[]
+  goal          UserGoal?
 }
 
 model VerificationToken {
@@ -55,10 +56,28 @@ model VerificationToken {
 model Measurement {
   id     String          @id @default(cuid())
   type   MeasurementType
-  value  Decimal         @db.Decimal(65, 4)
+  value  Float
   userId String
   date   DateTime        @default(now())
   User   User            @relation(fields: [userId], references: [id])
+}
+
+model UserGoal {
+  id        String @id @default(cuid())
+  userId    String @unique
+  weight    Float?
+  height    Float?
+  neck      Float?
+  shoulders Float?
+  arms      Float?
+  chest     Float?
+  forearms  Float?
+  wrist     Float?
+  waist     Float?
+  hips      Float?
+  thighs    Float?
+  calves    Float?
+  user      User   @relation(fields: [userId], references: [id])
 }
 
 enum MeasurementType {

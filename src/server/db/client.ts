@@ -5,6 +5,11 @@ import { env } from "../../env/server.mjs";
 declare global {
   // eslint-disable-next-line no-var
   var prisma: PrismaClient | undefined;
+
+  interface String {
+    toUpperCase<T extends string>(this: T): Uppercase<T>;
+    toLowerCase<T extends string>(this: T): Lowercase<T>;
+  }
 }
 
 export const prisma =
