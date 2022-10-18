@@ -1,8 +1,5 @@
-import { inferProcedureOutput } from "@trpc/server";
-
 import { forwardRef, useState } from "react";
 import toast from "react-hot-toast";
-import { AppRouter } from "../../../server/trpc/router";
 import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
 import { measurementTypesUpperCase } from "../../../utils/measurementTypes";
 import measurementTypesUnits from "../../../utils/measurementTypesUnits";
@@ -14,9 +11,7 @@ interface NewEntryPopupProps {
 }
 
 interface IFormData {
-  type: inferProcedureOutput<
-    AppRouter["measurements"]["getMeasurementTypes"]
-  >[number];
+  type: typeof measurementTypesUpperCase[number];
   value: number;
   date: Date;
   time: { hours: number; minutes: number };
