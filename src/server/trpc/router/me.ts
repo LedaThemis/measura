@@ -54,4 +54,14 @@ export const meRouter = router({
         },
       });
     }),
+  getEntries: protectedProcedure.query(async ({ ctx }) => {
+    const measurements =
+      (await prisma?.measurement.findMany({
+        where: {
+          userId: ctx.session.user.id,
+        },
+      })) ?? [];
+
+    return measurements;
+  }),
 });
