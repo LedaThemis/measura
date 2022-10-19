@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Sidebar from "../../components/pages/App/Sidebar";
+import Charts from "../../components/pages/App/Charts";
 
 const Progress: NextPage = () => {
   return (
@@ -15,8 +16,11 @@ const Progress: NextPage = () => {
       </Head>
       <main className="flex">
         <Sidebar />
-        <section className="mt-10 flex flex-grow justify-center">
-          <h2 className="text-4xl font-bold text-gray-600">Coming soon</h2>
+        <section className="mx-4 mt-10 flex flex-grow flex-col pb-8">
+          <header>
+            <h2 className="text-2xl">Progress</h2>
+          </header>
+          <Charts />
         </section>
       </main>
     </>
