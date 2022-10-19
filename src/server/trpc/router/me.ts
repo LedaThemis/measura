@@ -54,14 +54,27 @@ export const meRouter = router({
         },
       });
     }),
-  getEntries: protectedProcedure.query(async ({ ctx }) => {
-    const measurements =
-      (await prisma?.measurement.findMany({
-        where: {
-          userId: ctx.session.user.id,
-        },
-      })) ?? [];
+  getEntries: protectedProcedure
+    .input(
+      z
+        .object({
+          sort: z.enum(["asc", "desc"]),
+        })
+        .default({
+          sort: "desc",
+        })
+    )
+    .query(async ({ ctx, input }) => {
+      const measurements =
+        (await prisma?.measurement.findMany({
+          where: {
+            userId: ctx.session.user.id,
+          },
+          orderBy: {
+            date: input.sort,
+          },
+        })) ?? [];
 
-    return measurements;
-  }),
+      return measurements;
+    }),
 });
