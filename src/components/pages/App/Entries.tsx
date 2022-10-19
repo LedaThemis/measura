@@ -34,7 +34,7 @@ const Entries = () => {
                 measurement.type.toLowerCase(),
                 measurementTypesDBUnits,
                 measurementTypesUserUnits
-              );
+              ).toFixed(2);
               const measurementUnit =
                 measurementTypesUserUnits[measurement.type];
 
