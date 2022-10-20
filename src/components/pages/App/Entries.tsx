@@ -17,9 +17,15 @@ const Entries = () => {
         <table className="table-auto border">
           <thead className="border-b-2 bg-slate-50">
             <tr>
-              <th className="py-3 text-lg">Date</th>
-              <th className="py-3 text-lg">Type</th>
-              <th className="py-3 text-lg">Value</th>
+              <th scope="col" className="py-3 text-lg">
+                Date
+              </th>
+              <th scope="col" className="py-3 text-lg">
+                Type
+              </th>
+              <th scope="col" className="py-3 text-lg">
+                Value
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y-2">
