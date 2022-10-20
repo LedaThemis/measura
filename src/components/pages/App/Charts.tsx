@@ -18,6 +18,7 @@ import { measurementTypesLowerCase } from "../../../utils/measurementTypes";
 import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
 import { inferProcedureOutput } from "@trpc/server";
 import { AppRouter } from "../../../server/trpc/router";
+import ProgressTable from "./ProgressTable";
 
 ChartJS.register(
   CategoryScale,
@@ -118,20 +119,27 @@ const Charts = () => {
           {measurementTypesLowerCase.map((type) => (
             <div key={type} className="relative">
               {!fieldNameHasEntries(type, getEntriesQuery.data) && (
-                <div className="absolute grid h-full w-full place-content-center bg-gray-500 opacity-50">
-                  <p className="text-5xl font-bold">
+                <div className="absolute grid h-full w-full place-content-center bg-[rgb(1,1,1,0.6)]">
+                  <p className="text-5xl font-bold text-white">
                     No Data
                     <span className="sr-only">for {type} available</span>
                   </p>
                 </div>
               )}
               <Line
+                aria-hidden="true"
                 options={options}
                 data={getFieldData(
                   type,
                   getEntriesQuery.data,
                   getGoalQuery.data
                 )}
+              />
+              <ProgressTable
+                measurements={getEntriesQuery.data.filter(
+                  (m) => m.type === type.toUpperCase()
+                )}
+                type={type}
               />
             </div>
           ))}
