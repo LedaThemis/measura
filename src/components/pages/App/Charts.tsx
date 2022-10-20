@@ -30,8 +30,14 @@ ChartJS.register(
 );
 
 const options = {
+  type: "line",
   responsive: true,
-};
+  interaction: {
+    mode: "nearest",
+    axis: "x",
+    intersect: false,
+  },
+} as const;
 
 const fieldNameHasEntries = (
   fieldName: typeof measurementTypesLowerCase[number],
