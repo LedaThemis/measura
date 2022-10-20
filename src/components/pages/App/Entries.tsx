@@ -49,15 +49,15 @@ const Entries = () => {
                   key={measurement.id}
                   className="odd:bg-white even:bg-slate-50"
                 >
-                  <th className="py-3 text-base font-medium">
+                  <td className="py-3 text-center text-base font-medium">
                     {measurementDate}
-                  </th>
-                  <th className="py-3 text-sm font-medium text-gray-800">
+                  </td>
+                  <td className="py-3 text-center text-sm font-medium text-gray-800">
                     {measurementType}
-                  </th>
-                  <th className="py-3 text-sm text-gray-800">
+                  </td>
+                  <td className="py-3 text-center text-sm text-gray-800">
                     {measurementValue + measurementUnit}
-                  </th>
+                  </td>
                 </tr>
               );
             })}
