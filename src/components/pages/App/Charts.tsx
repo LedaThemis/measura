@@ -16,6 +16,8 @@ import measurementTypesUserUnits from "../../../utils/measurementTypesUserUnits"
 import { Measurement } from "@prisma/client";
 import { measurementTypesLowerCase } from "../../../utils/measurementTypes";
 import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
+import { inferProcedureOutput } from "@trpc/server";
+import { AppRouter } from "../../../server/trpc/router";
 
 ChartJS.register(
   CategoryScale,
@@ -65,13 +67,29 @@ const generateLabelsFromField = (
 
 const Charts = () => {
   const getEntriesQuery = trpc.me.getEntries.useQuery({ sort: "asc" });
+  const getGoalQuery = trpc.me.getGoal.useQuery();
 
   const getFieldData = (
     fieldName: typeof measurementTypesLowerCase[number],
-    entries: Measurement[]
+    entries: Measurement[],
+    goal: inferProcedureOutput<AppRouter["me"]["getGoal"]>
   ) => {
     const labels = generateLabelsFromField(entries, fieldName);
     const data = generateDatasetFromField(entries, fieldName);
+
+    const goalDataset =
+      goal && goal[fieldName]
+        ? {
+            label: "Goal",
+            data: data.map(() => goal[fieldName]),
+            fill: false,
+            radius: 0,
+            borderColor: "green",
+          }
+        : {
+            label: "No Goal",
+            data: [],
+          };
 
     return {
       labels,
@@ -80,7 +98,9 @@ const Charts = () => {
           label: capitalFirstLetter(fieldName),
           data,
           borderColor: "skyBlue",
+          tension: 0.5,
         },
+        goalDataset,
       ],
     };
   };
@@ -101,7 +121,11 @@ const Charts = () => {
               )}
               <Line
                 options={options}
-                data={getFieldData(type, getEntriesQuery.data)}
+                data={getFieldData(
+                  type,
+                  getEntriesQuery.data,
+                  getGoalQuery.data
+                )}
               />
             </div>
           ))}
