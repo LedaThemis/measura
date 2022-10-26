@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { measurementTypesLowerCase } from "../../../utils/measurementTypes";
 import { router, protectedProcedure } from "../trpc";
 
 const measurementValidator = (fieldName: string) =>
@@ -76,6 +77,52 @@ export const meRouter = router({
 
       return measurements;
     }),
+  getLastMonthEntries: protectedProcedure.query(async ({ ctx }) => {
+    const getLastMonthEntry = async (
+      type: typeof measurementTypesLowerCase[number]
+    ) => {
+      const currentDate = new Date();
+      const currentMonthFirstDayDate = new Date(
+        currentDate.getUTCFullYear(),
+        currentDate.getUTCMonth()
+      );
+
+      const measurement = (
+        (await ctx.prisma.measurement.findFirst({
+          where: {
+            date: {
+              lt: currentMonthFirstDayDate,
+            },
+            type: type.toUpperCase(),
+            userId: ctx.session.user.id,
+          },
+          orderBy: {
+            date: "desc",
+          },
+          select: {
+            value: true,
+          },
+        })) ?? { value: null }
+      ).value;
+
+      return measurement;
+    };
+
+    return {
+      weight: await getLastMonthEntry("weight"),
+      height: await getLastMonthEntry("height"),
+      neck: await getLastMonthEntry("neck"),
+      shoulders: await getLastMonthEntry("shoulders"),
+      arms: await getLastMonthEntry("arms"),
+      chest: await getLastMonthEntry("chest"),
+      forearms: await getLastMonthEntry("forearms"),
+      wrist: await getLastMonthEntry("wrist"),
+      waist: await getLastMonthEntry("waist"),
+      hips: await getLastMonthEntry("hips"),
+      thighs: await getLastMonthEntry("thighs"),
+      calves: await getLastMonthEntry("calves"),
+    };
+  }),
   getLatestEntries: protectedProcedure.query(async ({ ctx }) => {
     const getLatestEntry = async (
       type: typeof measurementTypesLowerCase[number]
@@ -87,7 +134,7 @@ export const meRouter = router({
             userId: ctx.session.user.id,
           },
           orderBy: {
-            id: "desc",
+            date: "desc",
           },
           select: {
             value: true,
