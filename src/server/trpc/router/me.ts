@@ -26,7 +26,7 @@ const goalSchema = {
 
 export const meRouter = router({
   getGoal: protectedProcedure.query(async ({ ctx }) => {
-    const res = await prisma?.user.findUnique({
+    const res = await ctx.prisma.user.findUnique({
       where: {
         id: ctx.session.user.id,
       },
@@ -40,7 +40,7 @@ export const meRouter = router({
   setGoal: protectedProcedure
     .input(z.object(goalSchema))
     .mutation(async ({ ctx, input }) => {
-      await prisma?.user.update({
+      await ctx.prisma.user.update({
         where: {
           id: ctx.session.user.id,
         },
@@ -65,15 +65,14 @@ export const meRouter = router({
         })
     )
     .query(async ({ ctx, input }) => {
-      const measurements =
-        (await prisma?.measurement.findMany({
-          where: {
-            userId: ctx.session.user.id,
-          },
-          orderBy: {
-            date: input.sort,
-          },
-        })) ?? [];
+      const measurements = await ctx.prisma.measurement.findMany({
+        where: {
+          userId: ctx.session.user.id,
+        },
+        orderBy: {
+          date: input.sort,
+        },
+      });
 
       return measurements;
     }),
