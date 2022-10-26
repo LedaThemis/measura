@@ -1,12 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useRef } from "react";
 import Sidebar from "../../components/pages/App/Sidebar";
-import NewEntryPopup from "../../components/pages/App/NewEntryPopup";
+import DashboardProgress from "../../components/pages/App/DashboardProgress";
+import NewEntryButton from "../../components/pages/App/NewEntryButton";
 
 const Home: NextPage = () => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
   return (
     <>
       <Head>
@@ -19,22 +17,10 @@ const Home: NextPage = () => {
       </Head>
       <main className="flex">
         <Sidebar />
-        <section className="mt-10 flex flex-grow flex-col items-center">
-          <button
-            className="max-w-sm rounded-md bg-blue-500 px-4 py-2 text-base text-white"
-            onClick={() => {
-              dialogRef.current?.showModal();
-            }}
-          >
-            New entry
-          </button>
-          <NewEntryPopup
-            ref={dialogRef}
-            closeModal={() => {
-              dialogRef.current?.close();
-            }}
-          />
-        </section>
+        <div className="flex-grow">
+          <NewEntryButton />
+          <DashboardProgress />
+        </div>
       </main>
     </>
   );
