@@ -1,6 +1,9 @@
 import capitalFirstLetter from "../../../utils/capitaliFirstLetter";
+import { convertUnit } from "../../../utils/convertUnits";
 import getPercentage from "../../../utils/getPercentage";
 import { measurementTypesLowerCase } from "../../../utils/measurementTypes";
+import measurementTypesDBUnits from "../../../utils/measurementTypesDBUnits";
+import measurementTypesUserUnits from "../../../utils/measurementTypesUserUnits";
 import { trpc } from "../../../utils/trpc";
 import ProgressBar from "../../ProgressBar";
 
@@ -43,6 +46,20 @@ const DashboardProgress = () => {
             const latestEntries = getLatestEntriesQuery.data;
             const lastMonthEntries = getLastMonthEntriesQuery.data;
 
+            const convertedGoalValue = convertUnit(
+              goalValue,
+              type,
+              measurementTypesDBUnits,
+              measurementTypesUserUnits
+            );
+
+            const convertedLatestEntry = convertUnit(
+              latestEntries[type] ?? 0,
+              type,
+              measurementTypesDBUnits,
+              measurementTypesUserUnits
+            );
+
             const currentPercentage = Math.floor(
               getPercentage(latestEntries[type], goalValue)
             );
@@ -54,6 +71,12 @@ const DashboardProgress = () => {
               <div key={type} className="flex flex-col gap-2">
                 <p>{capitalFirstLetter(type)}</p>
                 <div className="flex max-w-[800px] flex-col gap-2">
+                  <p className="text-center">
+                    {Math.floor(convertedLatestEntry)}
+                    {measurementTypesUserUnits[type.toUpperCase()]} /{" "}
+                    {Math.floor(convertedGoalValue)}
+                    {measurementTypesUserUnits[type.toUpperCase()]}
+                  </p>
                   <div className="w-full flex-grow">
                     <ProgressBar percentage={currentPercentage} />
                   </div>
