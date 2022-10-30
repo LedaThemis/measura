@@ -59,4 +59,16 @@ export const measurementsRouter = router({
         },
       });
     }),
+  deleteMeasurement: protectedProcedure
+    .input(z.object({ id: z.string({ required_error: "Id is required." }) }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.session.user.id;
+
+      await ctx.prisma.measurement.deleteMany({
+        where: {
+          id: input.id,
+          userId,
+        },
+      });
+    }),
 });
