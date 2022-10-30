@@ -1,3 +1,4 @@
+import Link from "next/link";
 import RightArrow from "../icons/RightArrow";
 import RulerIcon from "../icons/RulerIcon";
 
@@ -18,13 +19,13 @@ const Navbar = () => {
               Contact
             </a>
           </nav>
-          <a
+          <Link
             href="/app"
             className="inline-flex cursor-pointer items-center rounded bg-blue-400 py-1 px-3 text-base text-white hover:bg-blue-500"
           >
             App
             <RightArrow />
-          </a>
+          </Link>
         </div>
       </div>
     </header>
