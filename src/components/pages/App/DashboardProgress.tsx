@@ -30,7 +30,7 @@ const DashboardProgress = () => {
               return (
                 <div
                   key={type}
-                  className="flex  max-w-[800px] flex-col gap-2 rounded bg-[rgb(1,1,1,0.2)] p-1"
+                  className="flex flex-col gap-2 rounded bg-[rgb(1,1,1,0.2)] p-1"
                 >
                   <p>{capitalFirstLetter(type)}</p>
                   <div className="flex flex-col gap-2">
@@ -70,7 +70,7 @@ const DashboardProgress = () => {
             return (
               <div key={type} className="flex flex-col gap-2">
                 <p>{capitalFirstLetter(type)}</p>
-                <div className="flex max-w-[800px] flex-col gap-2">
+                <div className="flex flex-col gap-2">
                   <p className="text-center">
                     {Math.floor(convertedLatestEntry)}
                     {measurementTypesUserUnits[type.toUpperCase()]} /{" "}
