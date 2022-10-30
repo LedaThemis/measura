@@ -3,6 +3,18 @@ interface ProgressBarProps {
   height?: string;
 }
 
+const getLineWidth = (
+  lineIndex: number,
+  lineCount: number,
+  totalPercentage: number
+) => {
+  if (lineCount === 1) {
+    return totalPercentage;
+  } else {
+    return Math.min(totalPercentage - lineIndex * 100, 100);
+  }
+};
+
 const ProgressBar = ({ percentage, height = "8px" }: ProgressBarProps) => {
   const lineCount = Math.ceil(percentage / 100);
 
@@ -13,7 +25,7 @@ const ProgressBar = ({ percentage, height = "8px" }: ProgressBarProps) => {
           <div
             key={i}
             style={{
-              width: `${i == lineCount - 1 ? percentage % 100 : 100}%`,
+              width: `${getLineWidth(i, lineCount, percentage)}%`,
               height,
               // 10% darker for every extra 100%
               filter: `brightness(${100 - i * 10}%)`,
