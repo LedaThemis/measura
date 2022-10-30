@@ -16,6 +16,7 @@ interface NewEntryPopupProps {
 const NewEntryPopup = forwardRef<HTMLDialogElement, NewEntryPopupProps>(
   function NewEntryPopup(props, ref) {
     const mutation = trpc.measurements.createMeasurement.useMutation();
+    const utils = trpc.useContext();
 
     const handleSubmit = (
       formData: IFormData,
@@ -45,6 +46,9 @@ const NewEntryPopup = forwardRef<HTMLDialogElement, NewEntryPopupProps>(
       mutation.mutate(mutationPayload, {
         onSuccess: () => {
           updateErrors({});
+          utils.me.getEntries.invalidate();
+          utils.me.getLastMonthEntries.invalidate();
+          utils.me.getLatestEntries.invalidate();
           props.closeModal();
         },
         onError(error) {

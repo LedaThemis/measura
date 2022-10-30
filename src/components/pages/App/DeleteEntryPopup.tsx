@@ -11,12 +11,16 @@ interface DeleteEntryPopupProps {
 const DeleteEntryPopup = forwardRef<HTMLDialogElement, DeleteEntryPopupProps>(
   function UpdateEntryPopup(props, ref) {
     const mutation = trpc.measurements.deleteMeasurement.useMutation();
+    const utils = trpc.useContext();
 
     const handleSubmit = () => {
       mutation.mutate(
         { id: props.measurementId },
         {
           onSuccess: () => {
+            utils.me.getEntries.invalidate();
+            utils.me.getLastMonthEntries.invalidate();
+            utils.me.getLatestEntries.invalidate();
             props.closeModal();
           },
           onError: (error) => {
