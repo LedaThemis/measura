@@ -14,55 +14,57 @@ const Entries = () => {
         <h2 className="text-2xl">Entries</h2>
       </header>
       {getEntriesQuery.data?.length !== 0 ? (
-        <table className="table-auto border">
-          <thead className="border-b-2 bg-slate-50">
-            <tr>
-              <th scope="col" className="py-3 text-lg">
-                Date
-              </th>
-              <th scope="col" className="py-3 text-lg">
-                Type
-              </th>
-              <th scope="col" className="py-3 text-lg">
-                Value
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y-2">
-            {getEntriesQuery.data?.map((measurement) => {
-              const measurementDate =
-                measurement.date.toLocaleDateString() +
-                " " +
-                measurement.date.toLocaleTimeString();
-              const measurementType = capitalFirstLetter(measurement.type);
-              const measurementValue = convertUnit(
-                measurement.value,
-                measurement.type.toLowerCase(),
-                measurementTypesDBUnits,
-                measurementTypesUserUnits
-              ).toFixed(2);
-              const measurementUnit =
-                measurementTypesUserUnits[measurement.type];
-
-              return (
-                <tr
-                  key={measurement.id}
-                  className="odd:bg-white even:bg-slate-50"
-                >
-                  <td className="py-3 text-center text-base font-medium">
-                    {measurementDate}
-                  </td>
-                  <td className="py-3 text-center text-sm font-medium text-gray-800">
-                    {measurementType}
-                  </td>
-                  <td className="py-3 text-center text-sm text-gray-800">
-                    {measurementValue + measurementUnit}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <div className="max-w-fit overflow-x-auto shadow-md sm:rounded-lg">
+          <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+            <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  Date
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Type
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Value
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y-2">
+              {getEntriesQuery.data?.map((measurement) => {
+                const measurementDate = new Intl.DateTimeFormat(undefined, {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                  
+                }).format(measurement.date);
+                const measurementType = capitalFirstLetter(measurement.type);
+                const measurementValue = convertUnit(
+                  measurement.value,
+                  measurement.type.toLowerCase(),
+                  measurementTypesDBUnits,
+                  measurementTypesUserUnits
+                ).toFixed(2);
+                const measurementUnit =
+                  measurementTypesUserUnits[measurement.type];
+                return (
+                  <tr
+                    key={measurement.id}
+                    className="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600"
+                  >
+                    <td className="whitespace-nowrap px-6 py-4 font-medium text-gray-900 dark:text-white">
+                      {measurementDate}
+                    </td>
+                    <td className="px-6 py-4 text-gray-900 dark:text-white">
+                      {measurementType}
+                    </td>
+                    <td className="px-6 py-4 text-gray-900 dark:text-white">
+                      {measurementValue + measurementUnit}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <p>
           Looks like you don&apos;t have any entries yet, try adding some in{" "}
