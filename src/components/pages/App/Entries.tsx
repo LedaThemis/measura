@@ -78,7 +78,7 @@ const Entries = () => {
       ) : (
         <p>
           Looks like you don&apos;t have any entries yet, try adding some in{" "}
-          <Link href="/app/dashboard">Dashboard</Link>.
+          <Link href="/app">Dashboard</Link>.
         </p>
       )}
     </section>
