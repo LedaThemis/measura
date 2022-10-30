@@ -88,7 +88,14 @@ const Charts = () => {
       goal && goal[fieldName]
         ? {
             label: "Goal",
-            data: data.map(() => goal[fieldName]),
+            data: data.map(() =>
+              convertUnit(
+                goal[fieldName],
+                fieldName,
+                measurementTypesDBUnits,
+                measurementTypesUserUnits
+              )
+            ),
             fill: false,
             radius: 0,
             borderColor: "green",
