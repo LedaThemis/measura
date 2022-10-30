@@ -90,7 +90,7 @@ const Charts = () => {
             label: "Goal",
             data: data.map(() =>
               convertUnit(
-                goal[fieldName],
+                goal[fieldName] ?? 0,
                 fieldName,
                 measurementTypesDBUnits,
                 measurementTypesUserUnits
