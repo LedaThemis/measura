@@ -4,6 +4,7 @@ import { convertUnit } from "../../../utils/convertUnits";
 import measurementTypesDBUnits from "../../../utils/measurementTypesDBUnits";
 import measurementTypesUserUnits from "../../../utils/measurementTypesUserUnits";
 import { trpc } from "../../../utils/trpc";
+import UpdateEntryButton from "./UpdateEntryButton";
 
 const Entries = () => {
   const getEntriesQuery = trpc.me.getEntries.useQuery();
@@ -27,6 +28,9 @@ const Entries = () => {
                 <th scope="col" className="px-6 py-3">
                   Value
                 </th>
+                <th scope="col" className="px-6 py-3">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody className="divide-y-2">
@@ -34,7 +38,6 @@ const Entries = () => {
                 const measurementDate = new Intl.DateTimeFormat(undefined, {
                   dateStyle: "medium",
                   timeStyle: "short",
-                  
                 }).format(measurement.date);
                 const measurementType = capitalFirstLetter(measurement.type);
                 const measurementValue = convertUnit(
@@ -58,6 +61,11 @@ const Entries = () => {
                     </td>
                     <td className="px-6 py-4 text-gray-900 dark:text-white">
                       {measurementValue + measurementUnit}
+                    </td>
+                    <td className="px-6 py-4 text-gray-900 dark:text-white">
+                      <div className="flex justify-center gap-2">
+                        <UpdateEntryButton measurement={measurement} />
+                      </div>
                     </td>
                   </tr>
                 );
