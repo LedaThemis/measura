@@ -15,7 +15,8 @@ function defineNextConfig(config) {
 
 export default defineNextConfig({
   reactStrictMode: true,
-  swcMinify: true,
+  // https://github.com/chartjs/Chart.js/issues/10673
+  swcMinify: false,
   // Next.js i18n docs: https://nextjs.org/docs/advanced-features/i18n-routing
   i18n: {
     locales: ["en"],
