@@ -11,7 +11,13 @@ const isOriginalState = (
   state: GoalValuesType,
   data: GoalValuesType | null
 ) => {
-  if (!data) return true;
+  if (!data) {
+    if (measurementTypesLowerCase.every((type) => state[type] === null)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   return measurementTypesLowerCase.every((type) => state[type] === data[type]);
 };
