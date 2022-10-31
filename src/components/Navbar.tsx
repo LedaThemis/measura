@@ -19,12 +19,11 @@ const Navbar = () => {
               Contact
             </a>
           </nav>
-          <Link
-            href="/app"
-            className="inline-flex cursor-pointer items-center rounded bg-blue-400 py-1 px-3 text-base text-white hover:bg-blue-500"
-          >
-            App
-            <RightArrow />
+          <Link href="/app">
+            <a className="inline-flex cursor-pointer items-center rounded bg-blue-400 py-1 px-3 text-base text-white hover:bg-blue-500">
+              App
+              <RightArrow />
+            </a>
           </Link>
         </div>
       </div>
