@@ -25,6 +25,12 @@ const Login = () => {
         >
           Continue with Google
         </button>
+        <button
+          className="max-w-[500px] rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
+          onClick={() => signIn("github")}
+        >
+          Continue with Github
+        </button>
       </main>
     </>
   );
