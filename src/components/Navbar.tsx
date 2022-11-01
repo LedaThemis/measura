@@ -6,10 +6,10 @@ const Navbar = () => {
   return (
     <header className="body-font text-gray-600">
       <div className="container mx-auto flex flex-col items-center justify-between p-5 sm:flex-row">
-        <p className="title-font flex items-center font-medium text-gray-900">
+        <div className="title-font flex items-center font-medium text-gray-900">
           <RulerIcon className="h-10 w-10 rounded-full bg-blue-100 p-2 text-white" />
           <h1 className="ml-3 text-xl">Measura</h1>
-        </p>
+        </div>
         <div className="mt-2 flex flex-col items-center gap-2 sm:flex-row sm:gap-5">
           <nav className="flex flex-wrap items-center justify-center gap-5 text-base">
             <a href="#features" className="hover:text-gray-900">
