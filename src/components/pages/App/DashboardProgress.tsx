@@ -64,7 +64,7 @@ const DashboardProgress = () => {
               getPercentage(latestEntries[type], goalValue)
             );
             const percentageFromLastMonth = Math.floor(
-              getPercentage(lastMonthEntries[type], latestEntries[type])
+              100 - getPercentage(lastMonthEntries[type], latestEntries[type])
             );
 
             return (
@@ -84,7 +84,7 @@ const DashboardProgress = () => {
                     {currentPercentage}% (
                     {percentageFromLastMonth >= 0
                       ? "+" + percentageFromLastMonth
-                      : "-" + percentageFromLastMonth}
+                      : percentageFromLastMonth}
                     % last month)
                   </p>
                 </div>
