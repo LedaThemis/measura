@@ -1,7 +1,11 @@
-import { signIn } from "next-auth/react";
 import Head from "next/head";
+import SignInGithubButton from "../../buttons/SignInGithubButton";
+import SignInGoogleButton from "../../buttons/SignInGoogleButton";
+import Footer from "../../Footer";
+import LoginEmailForm from "./LoginEmailForm";
 
 const Login = () => {
+
   return (
     <>
       <Head>
@@ -12,25 +16,16 @@ const Login = () => {
         />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-      <main className="mt-4 flex w-screen flex-col items-center gap-2">
-        <button
-          className="max-w-[500px] rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
-          onClick={() => signIn("email")}
-        >
-          Login with email
-        </button>
-        <button
-          className="max-w-[500px] rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
-          onClick={() => signIn("google")}
-        >
-          Continue with Google
-        </button>
-        <button
-          className="max-w-[500px] rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
-          onClick={() => signIn("github")}
-        >
-          Continue with Github
-        </button>
+      <main className="flex min-h-screen flex-col justify-between">
+        <div className="mx-auto mt-12 flex max-w-[300px] flex-col gap-12 text-center">
+          <h1 className="text-4xl font-bold">Log in to Measura</h1>
+          <div className="flex flex-col gap-3">
+            <SignInGithubButton />
+            <SignInGoogleButton />
+            <LoginEmailForm />
+          </div>
+        </div>
+        <Footer />
       </main>
     </>
   );
