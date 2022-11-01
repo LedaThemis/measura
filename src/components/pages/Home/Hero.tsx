@@ -24,14 +24,13 @@ const Hero = () => {
             </button> */}
           </div>
         </div>
-        {/* TODO: should be replaced with screenshot from app */}
-        <div className="w-5/6 md:w-1/2 lg:w-full lg:max-w-lg">
+        <div className="w-5/6 md:w-1/2 lg:w-full lg:max-w-lg border">
           <Image
             className="rounded object-cover object-center"
             alt="hero"
-            src="https://dummyimage.com/720x600"
-            width={720}
-            height={600}
+            src="https://res.cloudinary.com/dj08db9y2/image/upload/v1667308964/Screenshot_2022-11-01_at_13-19-51_Progress_-_Measura_g13twk.png"
+            width={1920}
+            height={890}
           />
         </div>
       </div>

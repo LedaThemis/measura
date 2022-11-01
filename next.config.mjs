@@ -26,7 +26,7 @@ export default defineNextConfig({
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "dummyimage.com",
+        hostname: "res.cloudinary.com",
       },
     ],
   },
