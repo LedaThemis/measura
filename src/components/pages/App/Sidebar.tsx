@@ -69,10 +69,10 @@ const SidebarNav = () => {
 const Sidebar = () => {
   return (
     <header className="box-border flex h-screen w-min shrink-0 flex-col place-items-center gap-8 border-r-2 px-4 pt-4 sm:place-items-stretch ">
-      <a className="title-font flex  items-center gap-4 font-medium text-gray-900">
+      <div className="title-font flex  items-center gap-4 font-medium text-gray-900">
         <RulerIcon className="h-12 w-12 rounded-full bg-blue-100 p-2 text-white" />
         <h1 className="sr-only ml-3 text-2xl sm:not-sr-only">Measura</h1>
-      </a>
+      </div>
       <SidebarNav />
     </header>
   );
