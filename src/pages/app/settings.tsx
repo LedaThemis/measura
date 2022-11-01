@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import GoalForm from "../../components/pages/App/GoalForm";
+import LogoutSection from "../../components/pages/App/LogoutSection";
 import Sidebar from "../../components/pages/App/Sidebar";
 const Settings: NextPage = () => {
   return (
@@ -15,8 +16,9 @@ const Settings: NextPage = () => {
       </Head>
       <main className="flex">
         <Sidebar />
-        <section className="mt-10 flex flex-grow px-8 pb-8">
+        <section className="mt-10 flex flex-grow flex-col gap-4 px-8 pb-8">
           <GoalForm />
+          <LogoutSection />
         </section>
       </main>
     </>
