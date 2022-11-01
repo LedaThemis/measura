@@ -5,7 +5,7 @@ const LogoutSection = () => {
     <div className="flex flex-col gap-2">
       <h2 className="text-2xl">Logout</h2>
       <button
-        className="rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
+        className="rounded-lg bg-blue-600 p-2 text-xl text-white hover:bg-blue-700"
         onClick={() => signOut()}
       >
         Logout

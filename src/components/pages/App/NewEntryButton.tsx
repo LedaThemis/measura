@@ -7,7 +7,7 @@ const NewEntryButton = () => {
   return (
     <section className="mx-4 my-10 flex flex-grow">
       <button
-        className="w-full rounded-md bg-blue-500 px-4 py-2 text-lg text-white hover:bg-blue-600"
+        className="w-full rounded-md bg-blue-600 px-4 py-2 text-lg text-white hover:bg-blue-700"
         onClick={() => {
           dialogRef.current?.showModal();
         }}

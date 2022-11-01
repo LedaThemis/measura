@@ -20,7 +20,7 @@ const Navbar = () => {
             </a>
           </nav>
           <Link href="/app">
-            <a className="inline-flex cursor-pointer items-center rounded bg-blue-400 py-1 px-3 text-base text-white hover:bg-blue-500">
+            <a className="inline-flex cursor-pointer items-center rounded bg-blue-600 py-1 px-3 text-base text-white hover:bg-blue-700">
               App
               <RightArrow />
             </a>

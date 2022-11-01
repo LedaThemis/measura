@@ -67,7 +67,7 @@ const Contact = () => {
             <div className="w-full p-2">
               <button
                 type="submit"
-                className="mx-auto flex rounded border-0 bg-blue-500 py-2 px-8 text-lg text-white hover:bg-blue-600 focus:outline-none"
+                className="mx-auto flex rounded border-0 bg-blue-600 py-2 px-8 text-lg text-white hover:bg-blue-700 focus:outline-none"
               >
                 Send
               </button>
