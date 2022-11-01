@@ -12,12 +12,18 @@ const Login = () => {
         />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-      <main className="mt-4 flex w-screen justify-center">
+      <main className="mt-4 flex w-screen flex-col items-center gap-2">
         <button
-          className="rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
+          className="max-w-[500px] rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
           onClick={() => signIn("email")}
         >
           Login with email
+        </button>
+        <button
+          className="max-w-[500px] rounded-lg bg-blue-500 p-2 text-xl text-white hover:bg-blue-600"
+          onClick={() => signIn("google")}
+        >
+          Continue with Google
         </button>
       </main>
     </>

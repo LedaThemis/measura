@@ -22,6 +22,8 @@ export const serverSchema = z.object({
   EMAIL_SERVER_PORT: z.string(),
   // Could be email@example.com or NAME <email@example.com>
   EMAIL_FROM: z.string(),
+  GOOGLE_CLIENT_ID: z.string(),
+  GOOGLE_CLIENT_SECRET: z.string(),
 });
 
 /**
