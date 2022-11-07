@@ -27,6 +27,7 @@ export const serverSchema = z.object({
   GITHUB_ID: z.string(),
   GITHUB_SECRET: z.string(),
   REMINDERS_AUTH_KEY: z.string(),
+  REMINDERS_ADDRESS: z.string(),
 });
 
 /**
