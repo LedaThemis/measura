@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import NewReminderButton from "../../components/pages/App/NewReminderButton";
 import Sidebar from "../../components/pages/App/Sidebar";
 
 const Reminders: NextPage = () => {
@@ -15,8 +16,8 @@ const Reminders: NextPage = () => {
       </Head>
       <main className="flex">
         <Sidebar />
-        <section className="mt-10 flex flex-grow justify-center">
-          <h2 className="text-4xl font-bold text-gray-600">Coming soon</h2>
+        <section className="flex-grow">
+          <NewReminderButton />
         </section>
       </main>
     </>

@@ -29,6 +29,7 @@ specifiers:
   react: 18.2.0
   react-chartjs-2: ^4.3.1
   react-dom: 18.2.0
+  react-hook-form: ^7.39.1
   react-hot-toast: ^2.4.0
   react-icons: ^4.4.0
   superjson: 1.9.1
@@ -53,6 +54,7 @@ dependencies:
   react: 18.2.0
   react-chartjs-2: 4.3.1_2unjvz6v6rskedwoxtmbfw2rje
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.39.1_react@18.2.0
   react-hot-toast: 2.4.0_owo25xnefcwdq3zjgtohz6dbju
   react-icons: 4.4.0_react@18.2.0
   superjson: 1.9.1
@@ -2186,6 +2188,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-hook-form/7.39.1_react@18.2.0:
+    resolution: {integrity: sha512-MiF9PCILN5KulhSGbnjohMiTOrB47GerDTichMNP0y2cPUu1GTRFqbunOxCE9N1499YTLMV/ne4gFzqCp1rxrQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-hot-toast/2.4.0_owo25xnefcwdq3zjgtohz6dbju:
