@@ -309,6 +309,7 @@ const NewReminderPopup = forwardRef<HTMLDialogElement, NewReminderPopupProps>(
                       type="text"
                       placeholder="Measurement Time!"
                       className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
+                      required
                       {...register("text", { required: true })}
                     />
                   </div>
