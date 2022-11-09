@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import ButtonBase from "../../bases/ButtonBase";
 import NewEntryPopup from "./NewEntryPopup";
 
 const NewEntryButton = () => {
@@ -6,14 +7,14 @@ const NewEntryButton = () => {
 
   return (
     <section className="mx-4 my-10 flex flex-grow">
-      <button
-        className="w-full rounded-md bg-blue-600 px-4 py-2 text-lg text-white hover:bg-blue-700"
+      <ButtonBase
+        full={true}
         onClick={() => {
           dialogRef.current?.showModal();
         }}
       >
         New entry
-      </button>
+      </ButtonBase>
       <NewEntryPopup
         ref={dialogRef}
         closeModal={() => {
