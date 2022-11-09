@@ -1,5 +1,6 @@
 import { forwardRef, useState } from "react";
 import { SubmitHandler, useForm, Controller } from "react-hook-form";
+import toast from "react-hot-toast";
 import Select from "react-select";
 import {
   DayOfMonth,
@@ -155,6 +156,9 @@ const NewReminderPopup = forwardRef<HTMLDialogElement, NewReminderPopupProps>(
                 setError(data.error);
                 break;
             }
+          },
+          onError: (error) => {
+            toast.error(`Something went wrong! ${error.message}`);
           },
         }
       );
