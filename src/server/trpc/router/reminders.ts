@@ -40,9 +40,9 @@ export const remindersRouter = router({
         method: "POST",
         headers: {
           ...authorizationHeaders,
-          "content-type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: JSON.stringify({
+        body: new URLSearchParams({
           text: input.text,
           cron: input.cron,
           userId: ctx.session.user.id,
@@ -62,9 +62,9 @@ export const remindersRouter = router({
           method: "DELETE",
           headers: {
             ...authorizationHeaders,
-            "content-type": "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
           },
-          body: JSON.stringify({
+          body: new URLSearchParams({
             userId: ctx.session.user.id,
           }),
         }
