@@ -1,7 +1,7 @@
 <h1 align="center">
     <br>
     <img src="https://i.imgur.com/yL0QwSZ.png" alt="">
-    <a href="https://measura.vercel.app">Measura</a>
+    <a href="https://www.measura.app">Measura</a>
     <br>
 </h1>
 
